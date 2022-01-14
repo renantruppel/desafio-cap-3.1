@@ -15,10 +15,11 @@ export class GamesRepository implements IGamesRepository {
   }
 
   async findByTitleContaining(param: string): Promise<Game[]> {
+
     return this.repository
       .createQueryBuilder("games")
       //.where("games.title like '%' || :title || '%'", {title: param })
-      .where("games.title like :title", {title: '%' + param + '%' })
+      .where("LOWER(games.title) like :title", {title: '%' + param.toLowerCase() + '%' })
       .getMany()
 
   }

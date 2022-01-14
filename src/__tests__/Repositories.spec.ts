@@ -95,10 +95,6 @@ describe('Repositories', () => {
       user_id,
     });
 
-    const u = await ormUsersRepository.query('select * from users')
-    console.log(u)
-
-    console.log(user)
     expect(user).toMatchObject({
       first_name: 'Danilo',
       last_name: 'Vieira',
@@ -147,16 +143,16 @@ describe('Repositories', () => {
       last_name: 'Vieira',
     });
 
-    /*
+    
     expect(result1).toEqual([
       expect.objectContaining({
         first_name: 'Vinicius',
         last_name: 'Fraga',
         email: 'vinicius.fraga@rocketseat.com.br',
       }),
-    ]);*/
+    ]);
 
-    expect(result1).toEqual([]);
+    //expect(result1).toEqual([]);
 
     expect(result2).toEqual([
       expect.objectContaining({
@@ -168,9 +164,9 @@ describe('Repositories', () => {
   });
 
   it('[GamesRepository] should be able find a game by entire or partial given title', async () => {
-    const result1 = await gamesRepository.findByTitleContaining('Of U');
+    const result1 = await gamesRepository.findByTitleContaining('of u');
     const result2 = await gamesRepository.findByTitleContaining('eed');
-    const result3 = await gamesRepository.findByTitleContaining('Rocket League');
+    const result3 = await gamesRepository.findByTitleContaining('rocket league');
 
 
     expect(result1).toEqual([
